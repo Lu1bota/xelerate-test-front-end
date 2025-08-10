@@ -1,3 +1,6 @@
+import Achievements from "@/components/Achievements/Achievements";
+// import Container from "@/components/Container/Container";
+
 export default function Home() {
-  return null;
+  return <Achievements />;
 }

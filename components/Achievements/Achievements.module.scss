@@ -1,0 +1,206 @@
+@import "../../styles/mixins";
+
+$text-color: #a7a7a7;
+$bg-color: rgba(37, 37, 37, 0.6);
+
+.section {
+  border: 1px solid rgba(101, 101, 101, 0.5);
+  border-radius: 24px;
+  padding: 16px;
+  margin: 0 auto;
+  position: relative;
+  background-color: $bg-color;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 421px;
+  height: 100%;
+
+  filter: blur(27px);
+
+  background: linear-gradient(
+    to bottom right,
+    rgba(185, 135, 86, 1) 0%,
+    rgba(185, 135, 86, 0) 50%
+  );
+
+  z-index: -1;
+}
+
+.title {
+  font-family: "Museo Cyrl", sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: $text-color;
+  margin-bottom: 16px;
+}
+
+.containerAchievements {
+  border-radius: 16px;
+  padding: 8px;
+  backdrop-filter: blur(30px);
+  background-color: $bg-color;
+  border: 1px solid rgba(37, 37, 37, 1);
+  margin-bottom: 16px;
+}
+
+.listAchievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    border: 0.5px solid rgba(101, 101, 101, 0.5);
+    border-radius: 8px;
+    padding: 15px 16px;
+    flex: 1 1 calc(50% - 8px);
+
+    backdrop-filter: blur(30px);
+    background-color: $bg-color;
+
+    .itemCount {
+      font-weight: 400;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .itemDesc {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.2;
+      color: $text-color;
+      max-width: 117px;
+      min-height: 34px;
+    }
+  }
+}
+
+.listAchievementsStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 1px solid $bg-color;
+  border-radius: 16px;
+  padding: 4px;
+  background-color: $bg-color;
+
+  li {
+    padding: 16px;
+    flex: 1 1 calc(100% - 8px);
+
+    .itemNumber {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #af8d6c;
+      margin-bottom: 16px;
+    }
+
+    .containerStats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .textStats {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.2;
+        color: #a7a7a7;
+        opacity: 0.8;
+        @include size(123px, 34px);
+      }
+
+      .statsCount {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.2;
+        text-align: right;
+        color: #535353;
+        opacity: 0.8;
+      }
+    }
+
+    &:first-child {
+      border: 1px solid rgba(197, 164, 132, 0.5);
+      border-radius: 12px;
+
+      .containerStats {
+        min-height: 34px;
+        align-items: center;
+
+        // p {
+        //   //   margin-top: auto;
+        // }
+
+        .textStats {
+          color: #fff;
+          align-self: flex-end;
+          min-height: auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .section {
+    @include responsive-padding(24px);
+    max-width: 768px;
+  }
+
+  .background {
+    height: 292px;
+  }
+
+  .subtitle {
+    margin-bottom: 24px;
+  }
+
+  .listAchievements {
+    flex-wrap: nowrap;
+
+    li {
+      flex: 1 1 calc(100% - 8px);
+
+      .itemDesc {
+        @include size(128px, 34px);
+      }
+    }
+  }
+
+  .listAchievementsStats {
+    flex-wrap: nowrap;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section {
+    @include responsive-padding(24px);
+    max-width: 1200px;
+  }
+
+  .background {
+    height: 135px;
+  }
+
+  .title {
+    font-size: 38px;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+}

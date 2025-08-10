@@ -1,5 +1,6 @@
 $font-main: var(--font-raleway), sans-serif;
 $bg-color: #111;
+$text-color: #fff;
 
 html,
 body {
@@ -16,9 +17,19 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: $bg-color;
+  color: $text-color;
 
   main {
     flex: 1;
+    padding: 8px;
+    border: 1px solid rgba(37, 37, 37, 0.6);
+    border-radius: 32px;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+  }
+
+  ul {
+    list-style: none;
   }
 
   a {

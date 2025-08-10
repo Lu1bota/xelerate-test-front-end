@@ -1,0 +1,12 @@
+@mixin responsive-padding($size) {
+  padding: $size;
+}
+
+// @mixin margin-bottom($size) {
+//   margin-bottom: $size;
+// }
+
+@mixin size($width, $height) {
+  max-width: $width;
+  min-height: $height;
+}
