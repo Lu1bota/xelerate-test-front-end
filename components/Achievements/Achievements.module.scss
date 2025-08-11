@@ -1,4 +1,4 @@
-@import "../../styles/mixins";
+@use "../../styles/mixins" as *;
 
 $text-color: #a7a7a7;
 $bg-color: rgba(37, 37, 37, 0.6);
@@ -8,8 +8,9 @@ $bg-color: rgba(37, 37, 37, 0.6);
   border-radius: 24px;
   padding: 16px;
   margin: 0 auto;
-  position: relative;
   background-color: $bg-color;
+  position: relative;
+  max-width: 354px;
 }
 
 .background {
@@ -55,6 +56,76 @@ $bg-color: rgba(37, 37, 37, 0.6);
   margin-bottom: 16px;
 }
 
+.containerProgressBar {
+  border: 0.5px solid rgba(101, 101, 101, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+
+  .containerProgressStats {
+    max-height: 24px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    .containerIcon {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .openStats {
+      font-weight: 400;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: $text-color;
+    }
+
+    .allStatsCount {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #fff;
+
+      .countColor {
+        color: $text-color;
+      }
+    }
+  }
+
+  .progressbar {
+    border-radius: 8px;
+    border: 0.5px solid rgba(101, 101, 101, 0.5);
+    padding: 4px;
+    max-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+
+    .progressLine {
+      width: 100%;
+      max-width: 156px;
+      min-height: 22px;
+      border-radius: 4px;
+      background: linear-gradient(
+        270deg,
+        #d5ba94 0%,
+        #b98756 50%,
+        #534434 100%
+      );
+    }
+
+    .progressTrack {
+      border-radius: 4px;
+      background: #535353;
+      width: 100%;
+      max-width: 106px;
+      min-height: 22px;
+    }
+  }
+}
+
 .listAchievements {
   display: flex;
   flex-wrap: wrap;
@@ -95,12 +166,15 @@ $bg-color: rgba(37, 37, 37, 0.6);
   border-radius: 16px;
   padding: 4px;
   background-color: $bg-color;
+  margin-bottom: 16px;
 
   li {
     padding: 16px;
     flex: 1 1 calc(100% - 8px);
+    min-height: 94px;
 
     .itemNumber {
+      font-weight: 400;
       font-size: 12px;
       text-transform: uppercase;
       color: #af8d6c;
@@ -116,7 +190,7 @@ $bg-color: rgba(37, 37, 37, 0.6);
         font-weight: 400;
         font-size: 14px;
         line-height: 1.2;
-        color: #a7a7a7;
+        color: $text-color;
         opacity: 0.8;
         @include size(123px, 34px);
       }
@@ -136,27 +210,58 @@ $bg-color: rgba(37, 37, 37, 0.6);
       border-radius: 12px;
 
       .containerStats {
-        min-height: 34px;
-        align-items: center;
-
-        // p {
-        //   //   margin-top: auto;
-        // }
+        height: 100%;
+        max-height: 17px;
+        align-items: baseline;
 
         .textStats {
           color: #fff;
-          align-self: flex-end;
-          min-height: auto;
+          margin-bottom: 0;
         }
       }
     }
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+.containerSelect {
+  position: relative;
+  width: 100%;
+
+  select {
+    border: 1px solid rgba(37, 37, 37, 0.6);
+    border-radius: 8px;
+    padding: 12px 16px;
+    width: 100%;
+    backdrop-filter: blur(30px);
+    background-color: $bg-color;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: $text-color;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    transform: translateY(-10%);
+    width: 24px;
+    height: 24px;
+    background: url("/icons/arrow.svg") no-repeat center / contain;
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .section {
     @include responsive-padding(24px);
-    max-width: 768px;
+    max-width: 752px;
   }
 
   .background {
@@ -181,13 +286,51 @@ $bg-color: rgba(37, 37, 37, 0.6);
 
   .listAchievementsStats {
     flex-wrap: nowrap;
+
+    li {
+      position: relative;
+
+      &:nth-child(2) {
+        margin-right: 4px;
+      }
+
+      &:nth-child(3) {
+        margin-left: 4px;
+      }
+
+      &:nth-child(3)::before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 8px;
+        border: 1px solid #fff;
+        width: 64px;
+        height: 0px;
+        transform: translate(-75%, -50%) rotate(-90deg);
+        opacity: 0.05;
+      }
+    }
+  }
+
+  .containerProgressBar {
+    .containerProgressStats {
+      .containerIcon {
+        gap: 8px;
+      }
+    }
+
+    .progressbar {
+      .progressTrack {
+        max-width: 100%;
+      }
+    }
   }
 }
 
 @media screen and (min-width: 1200px) {
   .section {
     @include responsive-padding(24px);
-    max-width: 1200px;
+    max-width: 1184px;
   }
 
   .background {
@@ -202,5 +345,97 @@ $bg-color: rgba(37, 37, 37, 0.6);
   .subtitle {
     font-size: 24px;
     margin-bottom: 16px;
+  }
+
+  .containerListStats {
+    display: flex;
+    gap: 24px;
+    max-height: 87px;
+
+    .listAchievementsStats {
+      margin-bottom: 0;
+      flex-grow: 1;
+
+      li {
+        min-height: 79px;
+
+        .containerStats {
+          max-height: 17px;
+        }
+
+        .textStats {
+          max-width: 292px;
+          min-height: auto;
+        }
+
+        &:first-child {
+          margin-bottom: 0;
+
+          .containerStats {
+            min-height: 0;
+            max-height: 17px;
+
+            .textStats {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .containerSelect {
+      width: auto;
+    }
+  }
+
+  .containerSelect {
+    select {
+      width: 157px;
+      height: 100%;
+      border-radius: 16px;
+      padding: 0px 35px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      right: 25px;
+      transform: translateY(80%);
+      width: 24px;
+      height: 24px;
+      background: url("/icons/arrow.svg") no-repeat center / contain;
+      pointer-events: none;
+    }
+  }
+
+  .textStats {
+    margin-bottom: 0;
+  }
+
+  .containerAchievements {
+    display: flex;
+    gap: 8px;
+
+    .listAchievements {
+      width: 50%;
+    }
+
+    .containerProgressBar {
+      margin-bottom: 0;
+      width: 50%;
+
+      .progressbar {
+        min-height: 40px;
+
+        .progressLine {
+          min-height: 32px;
+        }
+
+        .progressTrack {
+          min-height: 32px;
+        }
+      }
+    }
   }
 }
