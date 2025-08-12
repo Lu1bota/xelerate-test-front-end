@@ -1,5 +1,7 @@
+import { achievementsStats } from "@/constants/achievementsStats";
 import Container from "../Container/Container";
 import StarIcon from "../StarIcon/StarIcon";
+import ResponsiveSwiper from "../Swiper/ResponsiveSwiper";
 import scss from "./Achievements.module.scss";
 
 export default function Achievements() {
@@ -52,29 +54,7 @@ export default function Achievements() {
         </div>
 
         <div className={scss.containerListStats}>
-          <ul className={scss.listAchievementsStats}>
-            <li>
-              <p className={scss.itemNumber}>01</p>
-              <div className={scss.containerStats}>
-                <p className={scss.textStats}>Всі досягнення</p>
-                <p className={scss.statsCount}>134</p>
-              </div>
-            </li>
-            <li>
-              <p className={scss.itemNumber}>02</p>
-              <div className={scss.containerStats}>
-                <p className={scss.textStats}>Досягнення на платформі</p>
-                <p className={scss.statsCount}>56</p>
-              </div>
-            </li>
-            <li>
-              <p className={scss.itemNumber}>03</p>
-              <div className={scss.containerStats}>
-                <p className={scss.textStats}>Досягнення фахівця</p>
-                <p className={scss.statsCount}>23</p>
-              </div>
-            </li>
-          </ul>
+          <ResponsiveSwiper slides={achievementsStats} enableBelow={768} />
 
           <div className={scss.containerSelect}>
             <select name="ranks" id="ranks">

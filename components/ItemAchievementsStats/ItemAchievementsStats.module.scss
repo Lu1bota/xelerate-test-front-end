@@ -1,0 +1,50 @@
+@use "../../styles/mixins" as *;
+
+$text-color: #a7a7a7;
+$bg-color: rgba(37, 37, 37, 0.6);
+
+.itemNumber {
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #af8d6c;
+  margin-bottom: 16px;
+}
+
+.containerStats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-height: 17px;
+  align-items: baseline;
+
+  .textStats {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: $text-color;
+    opacity: 0.8;
+    @include size(123px, 34px);
+  }
+
+  .statsCount {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: right;
+    color: #535353;
+    opacity: 0.8;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .containerStats {
+    max-height: 17px;
+
+    .textStats {
+      max-width: 292px;
+      min-height: auto;
+    }
+  }
+}
